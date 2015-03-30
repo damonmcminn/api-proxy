@@ -6,7 +6,6 @@ var services = require('./services');
 var proxy = httpProxy.createProxyServer({});
 
 http.createServer(function(req, res) {
-
   var target;
   var api;
   var identifier = /^\/.+(?=\/)/i;
@@ -15,6 +14,7 @@ http.createServer(function(req, res) {
     // match requires trailing slash => /nutrition/
     api = req.url.match(identifier)[0].replace('/', '').toLowerCase();
     req.url = req.url.replace(identifier, '');
+    req.headers['api-proxy-prefix'] = api;
   } catch (e) {
     api = 'error';
   }
