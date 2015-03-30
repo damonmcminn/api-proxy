@@ -19,8 +19,13 @@ http.createServer(function(req, res) {
     api = 'error';
   }
 
-  proxy.web(req, res, {
-    target: services[api] ? services[api] : services.error
-  });
+  proxy.web(
+    req,
+    res,
+    {target: services[api] ? services[api] : services.error},
+    function(e) {
+      res.statusCode = 500;
+      res.end();
+    });
 
 }).listen(8080);
