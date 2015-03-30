@@ -24,7 +24,7 @@ http.createServer(function(req, res) {
     res,
     {target: services[api] ? services[api] : services.error},
     function(e) {
-      res.statusCode = 500;
+      res.writeHead(500, {'Access-Control-Allow-Origin': '*'});
       res.end();
     });
 
