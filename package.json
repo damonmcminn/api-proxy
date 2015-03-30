@@ -1,0 +1,23 @@
+{
+  "name": "api-proxy",
+  "version": "1.0.0",
+  "description": "Proxy server for multiple APIs on a single domain",
+  "main": "proxy.js",
+  "dependencies": {
+    "http-proxy": "^1.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/damonmcminn/api-proxy.git"
+  },
+  "author": "Damon McMinn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/damonmcminn/api-proxy/issues"
+  },
+  "homepage": "https://github.com/damonmcminn/api-proxy"
+}
