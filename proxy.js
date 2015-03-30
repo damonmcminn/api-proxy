@@ -12,6 +12,7 @@ http.createServer(function(req, res) {
   var identifier = /^\/.+(?=\/)/i;
 
   try {
+    // match requires trailing slash => /nutrition/
     api = req.url.match(identifier)[0].replace('/', '').toLowerCase();
     req.url = req.url.replace(identifier, '');
   } catch (e) {
