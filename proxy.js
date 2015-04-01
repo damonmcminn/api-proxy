@@ -12,7 +12,7 @@ http.createServer(function(req, res) {
 
   try {
     // match requires trailing slash => /nutrition/
-    api = req.url.match(identifier)[0].replace('/', '').toLowerCase();
+    api = req.url.match(identifier).shift().replace('/', '').toLowerCase();
     req.url = req.url.replace(identifier, '');
     req.headers['api-proxy-prefix'] = api;
   } catch (e) {
@@ -23,8 +23,17 @@ http.createServer(function(req, res) {
     req,
     res,
     {target: services[api] ? services[api] : services.error},
+    // Error callback
     function(e) {
-      res.writeHead(500, {'Access-Control-Allow-Origin': '*'});
+      console.error((new Date).toISOString(), e.message);
+      delete e.address;
+      delete e.port;
+      var errorMsg = JSON.stringify(e);
+      res.writeHead(500, {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
+      });
+      res.write(errorMsg);
       res.end();
     });
 
