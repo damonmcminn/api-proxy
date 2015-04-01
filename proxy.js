@@ -6,7 +6,6 @@ var services = require('./services');
 var proxy = httpProxy.createProxyServer({});
 
 http.createServer(function(req, res) {
-  var target;
   var api;
   var identifier = /^\/.+(?=\/)/i;
 
