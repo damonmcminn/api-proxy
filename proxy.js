@@ -11,7 +11,8 @@ http.createServer(function(req, res) {
 
   try {
     api = req.url.match(identifier).shift().replace('/', '').toLowerCase();
-    req.url = req.url.replace(identifier, '');
+    // path without a trailing slash becomes an empty string
+    req.url = (req.url.replace(identifier, '') || '/');
     req.headers['api-proxy-prefix'] = api;
   } catch (e) {
     api = 'error';
