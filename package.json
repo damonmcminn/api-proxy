@@ -4,7 +4,7 @@
   "description": "Proxy server for multiple APIs on a single domain",
   "main": "proxy.js",
   "dependencies": {
-    "http-proxy": "git://github.com/damonmcminn/node-http-proxy.git"
+    "http-proxy": "^1.10.0"
   },
   "devDependencies": {},
   "scripts": {
