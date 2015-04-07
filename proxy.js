@@ -1,7 +1,7 @@
 var http = require('http');
 var httpProxy = require('http-proxy');
 var errorServer = require('./errorServer');
-var services = require('./services');
+var services = JSON.parse(process.env.API_PROXY_SERVICES);
 
 var proxy = httpProxy.createProxyServer({});
 
