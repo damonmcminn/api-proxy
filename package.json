@@ -1,6 +1,6 @@
 {
   "name": "api-proxy",
-  "version": "1.0.0",
+  "version": "1.0.1-0",
   "description": "Proxy server for multiple APIs on a single domain",
   "main": "proxy.js",
   "dependencies": {
