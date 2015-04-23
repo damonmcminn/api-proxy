@@ -1,13 +1,18 @@
+'use strict';
+
 var http = require('http');
 var httpProxy = require('http-proxy');
 var errorServer = require('./errorServer');
-var services = JSON.parse(process.env.API_PROXY_SERVICES);
+var services = require('parse-config');
 
-var proxy = httpProxy.createProxyServer({});
+var proxy = httpProxy.createProxyServer({ws: true});
 
-http.createServer(function(req, res) {
+let server = http.createServer(function(req, res) {
   var api;
-  var identifier = /^\/\w+/i;
+  // match on hyphens e.g. http-server
+  // also allows serving files e.g. http-server/file.js
+  // need to update regex to match: path/file.js but NOT /file.js
+  var identifier = /^\/\w+(-)*(\w+)*/i;
 
   try {
     api = req.url.match(identifier).shift().replace('/', '').toLowerCase();
@@ -37,3 +42,8 @@ http.createServer(function(req, res) {
     });
 
 }).listen(8080);
+
+
+server.on('upgrade', function(req, socket, head) {
+  // proxy.ws
+});

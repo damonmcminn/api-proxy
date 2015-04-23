@@ -4,7 +4,8 @@
   "description": "Proxy server for multiple APIs on a single domain",
   "main": "proxy.js",
   "dependencies": {
-    "http-proxy": "^1.10.0"
+    "http-proxy": "^1.10.0",
+    "parse-config": "git://github.com/damonmcminn/parse-config.git"
   },
   "devDependencies": {},
   "scripts": {
